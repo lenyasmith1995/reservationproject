@@ -6,13 +6,16 @@
 </head>
 <body>
 	<h1>Контактные данные</h1>
-	<form> 
+	<form action="/reservation/create" method="POST"> 
 		Имя:
 		<input type="text" name="clientname">
 		<br>
 		<br>
-		Телефон:
-		<input type="text" name="clientphone">
+		Телефон: +7
+		(
+		<input type="text" name="clientphone1">
+		)
+		<input type="text" name="clientphone2">
 		<br>
 		<br>
 		<label>Комментарий:</label>

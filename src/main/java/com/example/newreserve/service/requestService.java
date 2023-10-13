@@ -6,14 +6,11 @@ import java.sql.Timestamp;
 
 import javax.sql.DataSource;
 
-import org.springframework.stereotype.Component;
-
 import com.example.newreserve.model.Requestmodel2;
 import com.example.newreserve.repository.SQLConnection;
 
 import jakarta.servlet.http.HttpSession;
 
-@Component
 public class requestService {
 	
 	DataSource dataSource;
@@ -22,7 +19,7 @@ public class requestService {
 		this.dataSource =  dataSource;
 	}
 	
-	public void saveRequest(Requestmodel2 request, HttpSession session) {
+	public void saveRequest(Requestmodel2 request, HttpSession session, int tableid) {
 		Date inputdate = request.getDate();
 		Time inputtime = request.getTime();
 		int inputcounter = request.getCounter();
@@ -31,12 +28,24 @@ public class requestService {
 		int PlaceID = 3;
 		boolean solution = false;
 		Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
-		int TableID = 1;
 		
 		
 		SQLConnection sqlconn = new SQLConnection(dataSource);
-		sqlconn.saveTableRequest(sessionID, PlaceID , currentTimeStamp, inputdate, inputtime, inputcounter, solution, TableID);
-		
-		
+		sqlconn.saveTableRequest(sessionID, PlaceID , currentTimeStamp, inputdate, inputtime, inputcounter, solution, tableid);	
 	}
+
+	public int freetable(Requestmodel2 request, HttpSession session) {
+		Date inputdate = request.getDate();
+		Time inputtime = request.getTime();
+		int inputcounter = request.getCounter();
+	
+		int PlaceID = 3;
+		
+		SQLConnection sqlconn = new SQLConnection(dataSource);
+		int tableid = sqlconn.lookForTable(PlaceID,inputdate, inputtime, inputcounter);
+		
+		return tableid;
+	}
+	
+	
 }
