@@ -13,8 +13,8 @@
 			<input type="date" 
 			id="start" 
 			name="inputdate" 
-			value="2018-07-22" 
-			min="2018-01-01" max="2018-12-31" 
+			value="${.now?string["yyyy.MM.dd"]}" 
+			min="${.now?string["yyyy.MM.dd"]}"
 			required pattern="\d{4}-\d{2}-\d{2} /"
 			required />
 			<br>

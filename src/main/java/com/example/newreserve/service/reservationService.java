@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 
 import javax.sql.DataSource;
 
-import com.example.newreserve.model.Requestmodel2;
 import com.example.newreserve.model.reservationmodel;
 import com.example.newreserve.repository.SQLConnection;
 
@@ -37,7 +36,6 @@ public class reservationService {
 		
 		String sessionID = session.getId();
 		int PlaceID = 3;
-		boolean solution = false;
 		Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
 		int TableID = (int)session.getAttribute("tableid");
 		

@@ -25,12 +25,7 @@ public class ReservationController {
 	public String request() {
 		return "myrequest2";
 	}
-	
-	@GetMapping("/print")
-	public String print() {
-		return "TOMCAT hello!";
-	}
-	
+		
 	@Autowired
 	DataSource dataSource;
 	
@@ -55,8 +50,20 @@ public class ReservationController {
 	public String createReservation(reservationmodel reserve, HttpSession session) {
 		reservationService reservs = new reservationService(dataSource, (Date)session.getAttribute("date") , (Time)session.getAttribute("time"), (int)session.getAttribute("counter"));
 		reservs.saveReservation(reserve, session);
-		return "myrequest2";
+		return "finish";
 		
+	}
+	
+	@GetMapping("/full")
+	public String comeback() {
+		return "myrequest2";
+	
+	}
+		
+	@GetMapping("/allgood")
+		public String go() {
+			return "myrequest2";
+	
 	}
 	
 }
