@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Стола нет</title>
+<title>Забронирован!</title>
 </head>
 <body>
 

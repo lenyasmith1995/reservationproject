@@ -12,7 +12,7 @@
 		Укажите дату:
 			<input type="date" 
 			id="start" 
-			name="inputdate" 
+			name="inputdate"
 			value="${.now?string["yyyy.MM.dd"]}" 
 			min="${.now?string["yyyy.MM.dd"]}"
 			required pattern="\d{4}-\d{2}-\d{2} /"

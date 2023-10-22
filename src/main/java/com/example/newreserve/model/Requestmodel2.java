@@ -3,10 +3,23 @@ package com.example.newreserve.model;
 import java.sql.Date;
 import java.sql.Time;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 public class Requestmodel2 {
 	
+    @Future(message = "Бронирование на прошедшую дату невозможно")
 	private Date date;
 	private String time;
+    @Min( 
+            value = 1, groups = Requestmodel2.class, 
+            message 
+	          = "Количество мест от 1 до 8")
+    @Max( 
+            value = 8, groups = Requestmodel2.class, 
+            message 
+	          = "Количество мест от 1 до 8") 
 	private int counter;  
 	
 	
@@ -17,7 +30,7 @@ public class Requestmodel2 {
 	}
 	
 	
-	
+
 	public Date getDate() {  
 	    return date;  
 	}   

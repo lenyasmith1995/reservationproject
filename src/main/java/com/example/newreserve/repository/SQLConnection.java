@@ -57,7 +57,8 @@ public class SQLConnection {
 			+ "FROM (\n"
 			+ "  SELECT TB.InsideID, COUNT(reservationtime) AS RESERVE\n"
 			+ "  FROM  (timetablenew tt FULL OUTER JOIN TableObj TB\n"
-			+ "    ON TB.MinSeats = ?\n"
+			+ "    ON TB.MinSeats <= ?\n"
+			+ "    AND TB.MaxSeats >= ?\n"
 			+ "    AND TB.PlaceID = ?\n"
 			+ "    AND timeOfDay BETWEEN (SELECT StartTime\n"
 			+ "          FROM #TempTbl\n"
@@ -107,7 +108,7 @@ public class SQLConnection {
 		List<Integer> tableIds = new ArrayList<Integer>();
 		int tableId;
 		try {
-			tableIds= jdbcTemplate.queryForList(SELECT_TABLE_1,Integer.class, inputtime, inputcounter, placeID, inputdate);
+			tableIds= jdbcTemplate.queryForList(SELECT_TABLE_1,Integer.class, inputtime, inputcounter, inputcounter, placeID, inputdate);
 		} 
 		catch (IncorrectResultSizeDataAccessException e) {
 			return 0;

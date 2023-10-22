@@ -1,14 +1,29 @@
 package com.example.newreserve.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class reservationmodel {
 	
+    @NotBlank(message = "Поле имя не должно быть пустым")
 	private String  clientname;
+    @NotBlank(message = "Номер телефона не должен быть пустым") 
+    @Size( 
+    		min = 3, max = 3, 
+            message 
+	          = "Здесь должен быть трехзначный префикс номера телефона формата 929,916, и тд.")
 	private String clientphone1;
+    @NotBlank(message = "Номер телефона не должен быть пустым") 
+    @Size( 
+            min = 7, max = 7,  
+            message 
+	          = "Здесь должен быть номера телефона без трехзначного префикса")
 	private String clientphone2;
 	private String  clientcomment;  
 	
 	
 	public reservationmodel(String clientname, String clientphone1, String clientphone2, String clientcomment) {
+
 		this.clientname=clientname;
 		this.clientphone1=clientphone1;
 		this.clientphone2=clientphone2;

@@ -14,7 +14,7 @@ public class AppConfig {
 	@Bean
 	DataSource dataSource() {
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-		driverManagerDataSource.setUrl("jdbc:sqlserver://192.168.1.110:1433; databaseName = reservationproject ; encrypt=false;");
+		driverManagerDataSource.setUrl("jdbc:sqlserver://192.168.0.111:1433; databaseName = reservationproject ; encrypt=false;");
 		driverManagerDataSource.setUsername("requestclient");
 		driverManagerDataSource.setPassword("123456");
 		driverManagerDataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
